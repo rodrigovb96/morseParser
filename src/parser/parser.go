@@ -20,49 +20,44 @@ type morseParser struct {
 	lookup map[rune]string
 }
 
-func (parser *morseParser) fromDotOrDashToChar(morseLetter string) rune {
+func (parser *morseParser) fromDotOrDashToChar(morseLetter string) string{
 
 	aux := parser.morseTree
 
 	for _, dotOrDash := range morseLetter {
 
-		if dotOrDash == '.' {
-			aux = aux.left
-		} else if dotOrDash == '-'{
+		if dotOrDash == '.'{
 			aux = aux.right
-		// For spaces
-		} else if dotOrDash == '/' {
-			return ' '
+		} else if dotOrDash == '-' {
+			aux = aux.left
 		}
-
 	}
 
-	return aux.value
+	return string(aux.value)
 }
 
 func (parser *morseParser) insert(value rune, directions string) bool {
 
 	aux := parser.morseTree
 
-	for _ , d := range directions {
+	for _, d := range directions {
 		if d == '.' {
-			if aux.left == nil {
-				aux.left = new(node)
-			}
-			aux = aux.left
-		} else if d == '-' {
 			if aux.right == nil {
 				aux.right = new(node)
 			}
 			aux = aux.right
-		} else {
+		} else if d == '-' {
+			if aux.left == nil {
+				aux.left = new(node)
+			}
+			aux = aux.left
+		} else{
 			return false
 		}
+
 	}
 
-
 	aux.value = value
-
 	return true
 }
 
@@ -73,7 +68,7 @@ func (parser *morseParser)ToASCII(morseCode string)(asciiStr string) {
 	morseLetters := strings.Split(morseCode," ")
 
 	for _, letter := range morseLetters {
-		asciiStr += string(parser.fromDotOrDashToChar(letter))
+		asciiStr += parser.fromDotOrDashToChar(letter)
 	}
 
 
@@ -111,7 +106,7 @@ func (parser *morseParser) FromASCII(asciiStr string)( morseCode string) {
 		if letter == ' ' {
 			morseCode += " "
 		} else {
-			morseCode += parser.lookup[rune(letter)]
+			morseCode += parser.lookup[rune(letter)] + " "
 		}
 
 	}
