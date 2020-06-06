@@ -9,7 +9,8 @@ import (
 	"os"
 	"bufio"
 	"path/filepath"
-
+	"player"
+	"time"
 )
 
 func procFrom(w http.ResponseWriter, r * http.Request) {
@@ -73,6 +74,7 @@ func main() {
 	fileName := flag.String("file","","Path to file from which the text will be converted from or to morse code")
 	inputString := flag.String("inputText","","The text that will be converted from or to morse code")
 	op := flag.String("operation","from","The operation (from or to) morse code")
+	needToPlayAudio := flag.Bool("playAudio",false,"If setted and the operation=to, the program will play the morse code in audio")
 
 	flag.Parse()
 
@@ -91,9 +93,25 @@ func main() {
 		fmt.Println("No input given")
 	}
 
-
 	fmt.Println(result)
 
+	if *needToPlayAudio && (*op== "to") {
+
+		for _, letter := range result {
+			delay := time.Duration(0)
+
+			if letter == '.' {
+				player.PlayAudioFromFile("files/dot.wav")
+			} else if letter == '-' {
+				player.PlayAudioFromFile("files/dash.wav")
+			} else if letter == '/' {
+				delay = 100
+			}
+
+
+			time.Sleep(delay * time.Millisecond)
+		}
+	}
 
 
 

@@ -30,6 +30,8 @@ func (parser *morseParser) fromDotOrDashToChar(morseLetter string) string{
 			aux = aux.right
 		} else if dotOrDash == '-' {
 			aux = aux.left
+		} else if dotOrDash == '/' {
+			return " "
 		}
 	}
 
@@ -104,7 +106,7 @@ func (parser *morseParser) initTree() {
 func (parser *morseParser) FromASCII(asciiStr string)( morseCode string) {
 	for _, letter := range strings.ToUpper(asciiStr){
 		if letter == ' ' {
-			morseCode += " "
+			morseCode += "/ "
 		} else {
 			morseCode += parser.lookup[rune(letter)] + " "
 		}
