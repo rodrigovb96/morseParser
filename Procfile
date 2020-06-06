@@ -1,1 +1,1 @@
-web: bin/morseGo -mode=web
+web: bin/morseGo
