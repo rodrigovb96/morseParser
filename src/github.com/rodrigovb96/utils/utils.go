@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"player"
+	"github.com/rodrigovb96/player"
 	"os"
 	"bufio"
 	"path/filepath"

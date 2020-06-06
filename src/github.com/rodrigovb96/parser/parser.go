@@ -79,7 +79,7 @@ func (parser *morseParser)ToASCII(morseCode string)(asciiStr string) {
 
 
 func (parser *morseParser) initTree() {
-	absPath, _ := filepath.Abs("src/parser/init_morse.txt")
+	absPath, _ := filepath.Abs("github.com/rodrigovb96/parser/init_morse.txt")
 	morseFile, err := os.Open(absPath)
 
 	if err != nil {

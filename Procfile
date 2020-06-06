@@ -1,1 +1,1 @@
-web: ./main -mode=web
+web: bin/morseGo -mode=web

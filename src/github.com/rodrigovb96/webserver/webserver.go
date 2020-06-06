@@ -5,7 +5,7 @@ import (
 	"html/template"
 	"path/filepath"
 	"strings"
-	"parser"
+	"github.com/rodrigovb96/parser"
 )
 
 // The index page
