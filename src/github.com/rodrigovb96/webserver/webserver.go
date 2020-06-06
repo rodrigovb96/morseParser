@@ -50,8 +50,4 @@ func parsePage(w http.ResponseWriter, r * http.Request) {
 func InitServer() {
 	http.HandleFunc("/",indexPage)
 	http.HandleFunc("/parse/",parsePage)
-
-	if err := http.ListenAndServe(":8080",nil); err != nil {
-		panic(err)
-	}
 }
