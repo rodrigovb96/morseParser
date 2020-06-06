@@ -1,9 +1,9 @@
 package main
 
 import (
-	"parser"
-	"webserver"
-	"utils"
+	"github.com/rodrigovb96/parser"
+	"github.com/rodrigovb96/webserver"
+	"github.com/rodrigovb96/utils"
 
 	"fmt"
 	"flag"
