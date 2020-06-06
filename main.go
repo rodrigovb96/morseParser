@@ -15,7 +15,7 @@ var (
 	inputString = flag.String("inputText","","The text that will be converted from or to morse code")
 	needToPlayAudio = flag.Bool("playAudio",false,"If setted and the operation=to, the program will play the morse code in audio")
 	op = flag.String("operation","to","The operation (from or to) morse code")
-	mode = flag.String("mode","cli","The mode that the program will operate( cli or web)")
+	mode = flag.String("mode","web","The mode that the program will operate( cli or web)")
 )
 
 func main() {
