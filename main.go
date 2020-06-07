@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/rodrigovb96/parser"
-	"github.com/rodrigovb96/webserver"
-	"github.com/rodrigovb96/utils"
+	"github.com/rodrigovb96/morseParser/parser"
+	"github.com/rodrigovb96/morseParser/webserver"
+	"github.com/rodrigovb96/morseParser/utils"
 
 	"fmt"
 	"flag"
