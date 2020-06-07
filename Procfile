@@ -1,1 +1,1 @@
-web: morseGo-heroku
+web: main 
