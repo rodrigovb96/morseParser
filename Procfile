@@ -1,1 +1,1 @@
-web: bin/morseGo-heroku
+web: morseGo-heroku
