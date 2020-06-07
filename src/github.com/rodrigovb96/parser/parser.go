@@ -4,7 +4,6 @@ import (
 	"strings"
 	"os"
 	"bufio"
-	"path/filepath"
 )
 
 
@@ -79,8 +78,7 @@ func (parser *morseParser)ToASCII(morseCode string)(asciiStr string) {
 
 
 func (parser *morseParser) initTree() {
-	absPath, _ := filepath.Abs("github.com/rodrigovb96/parser/init_morse.txt")
-	morseFile, err := os.Open(absPath)
+	morseFile, err := os.Open("files/init_morse.txt")
 
 	if err != nil {
 		panic(err)

@@ -1,11 +1,14 @@
 package webserver
 
 import (
+	"github.com/rodrigovb96/parser"
+
 	"net/http"
 	"html/template"
 	"path/filepath"
 	"strings"
-	"github.com/rodrigovb96/parser"
+	"fmt"
+	"os"
 )
 
 // The index page
@@ -46,8 +49,30 @@ func parsePage(w http.ResponseWriter, r * http.Request) {
 	w.Write([]byte(result))
 }
 
+func determineListenAddress() (string,error) {
+	port := os.Getenv("PORT")
+	if port == "" {
+		return "", fmt.Errorf("$PORT not set")
+	}
+
+	return ":" + port, nil
+}
+
+
+
+
 // Simple exposed function for initializing the server
 func InitServer() {
 	http.HandleFunc("/",indexPage)
 	http.HandleFunc("/parse/",parsePage)
+
+	port, err := determineListenAddress()
+
+	if err != nil {
+		panic(err)
+	}
+
+	if err := http.ListenAndServe(port, nil); err != nil {
+		panic(err)
+	}
 }
