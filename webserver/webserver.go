@@ -29,24 +29,53 @@ func indexPage(w http.ResponseWriter, r * http.Request) {
 
 }
 
-// The page with the result value
-func parsePage(w http.ResponseWriter, r * http.Request) {
-	command := r.URL.Path[ len("/parse/") : len("/parse/")+1 ]
-	query := r.URL.Query()
-	message := query.Get("input")
+type response struct {
+	ParsedText string
+	Command	string
+}
+
+func getResponse(command string, message string) response{
 
 	var result string
 	// From ASCII to morse 
 	if command == "t" {
 		result = parser.MorseCode.FromASCII(message)
-
 	// From morse to ASCII
 	} else if command == "f" {
 		message := strings.Replace(message,"+"," ",-1)
 		result = parser.MorseCode.ToASCII(message)
 	}
 
-	w.Write([]byte(result))
+	return response{ ParsedText: result, Command: command }
+
+}
+
+// The page with the result value
+func parsePage(w http.ResponseWriter, r * http.Request) {
+	command := r.URL.Path[ len("/parse/") : len("/parse/")+1 ]
+	query := r.URL.Query()
+	message := query.Get("input")
+
+	resp := getResponse(command,message)
+
+	filePath, _ := filepath.Abs("files/templates/parsed.html")
+	tmpl, err := template.ParseFiles(filePath)
+
+	if err != nil {
+		http.Error(w,err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+
+	if err := tmpl.Execute(w,resp); err != nil {
+		http.Error(w,err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+
+
+
+	//w.Write([]byte(result))
 }
 
 func determineListenAddress() (string,error) {
@@ -57,8 +86,6 @@ func determineListenAddress() (string,error) {
 
 	return ":" + port, nil
 }
-
-
 
 
 // Simple exposed function for initializing the server
