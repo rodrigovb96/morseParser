@@ -4,9 +4,9 @@
 	<body>
 		<h1> Result:<h1>
 				<p id="result">{{ .ParsedText }}</p>
+				{{ if .Command }} 
 				<input type="button" value="Play MorseCode" onclick="playMorse(0);"/>
-				<audio controls id="empty"/>
-					<audio controls id="dashAudio" src="data:audio/wav;base64,UklGRiQZAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAZAAAbBBwl+ESWVlpZ1EpV
+				<audio style="display:none;" controls id="dashAudio" src="data:audio/wav;base64,UklGRiQZAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAZAAAbBBwl+ESWVlpZ1EpV
 							    L28KReSbwsOst6W0rwrIBeuJERk1r07/WaFU1D84H+346dP9toKnPqgnuQTXevyCIklCzVWiWexM
 							    JzIaDoTnYsURrsGlD65jxYLnHg4iMvFMnVnTVUJCiSJ1/AnXIrlCqH6n/7bn0+z4Ox/QP6lU9lm7
 							    Tgo1mxHv6iPIma/VpaGsv8Ie5JsKJi8HSyBZ2VaeRMglAAA52mG7J6ngpvi02tBk9eMbQD1fUypa
@@ -120,7 +120,7 @@
 							    4BQHGCwASYJYvlfeRvcojAN33b29LapkphCz3s3j8X4YnDrxUT9a8FGdOnsY5vHZzRSzX6Y0qre9
 							    fd2FA/0o2kbCV35YAkkWLBMHyOAswF+rAaZSsebKd+77FPY3S1BKWjxTZj27G5D1q9AstaamaakI
 							    u+Ha"/>
-						<audio controls id="dotAudio" src="data:audio/wav;base64,UklGRqQMAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YYAMAAAbBB0l+ESVVllZ1EpV
+					<audio style="display:none;" controls id="dotAudio" src="data:audio/wav;base64,UklGRqQMAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YYAMAAAbBB0l+ESVVllZ1EpV
 								    L3AKReSawsSst6W0rwrIBeuIERo1r07/WaFU1D85H+346dP9toKnPagnuQPXe/yDIklCzVWiWexM
 								    JzIZDobnYsUPrsKlEK5kxYPnHQ4jMvFMnFnSVUNCiSJ0/AnXIrlDqH+nALfo0+z4Oh/PP6hU9Vm8
 								    Tgs1mhHv6iLIma/VpaGsv8Id5JwKJi8HSyBZ2VaeRMglAAA52mK7Jqngpvi02tBl9eIbQT1eUyta
@@ -176,6 +176,7 @@
 								    2VaeRMclAAA52mK7J6ngpvi02tBl9eMbQT1eUytaZ1DeNxEVZu71ykSxC6ZYqzHAxuATBxgsAEmC
 								    WL5X3kb3KIsDd929vS2qZKYPs93N4/F9GJw68VE/WvBRnTp6GOfx2s0Vs16mM6q3vX7dhgP8KNlG
 								    wld+WANJFywUB8fgLMBfqwGmUbHmynju+xT1N0xQSlo9U2c9uhuQ9arQLLWmpmqpCLvh2g=="/>
+				{{end}}
 	</body>
 </html>
 

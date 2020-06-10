@@ -34,7 +34,7 @@ type response struct {
 	Command	string
 }
 
-func getResponse(command string, message string) response{
+func processInput(command string, message string) response{
 
 	var result string
 	// From ASCII to morse 
@@ -42,8 +42,13 @@ func getResponse(command string, message string) response{
 		result = parser.MorseCode.FromASCII(message)
 	// From morse to ASCII
 	} else if command == "f" {
-		message := strings.Replace(message,"+"," ",-1)
-		result = parser.MorseCode.ToASCII(message)
+		if strings.ContainsRune(message,' ') {
+			result = parser.MorseCode.ToASCII(message)
+		}else {
+			result = "Invalid Input!"
+		}
+
+		command = ""
 	}
 
 	return response{ ParsedText: result, Command: command }
@@ -56,7 +61,7 @@ func parsePage(w http.ResponseWriter, r * http.Request) {
 	query := r.URL.Query()
 	message := query.Get("input")
 
-	resp := getResponse(command,message)
+	resp := processInput(command,message)
 
 	filePath, _ := filepath.Abs("files/templates/parsed.html")
 	tmpl, err := template.ParseFiles(filePath)
@@ -73,9 +78,6 @@ func parsePage(w http.ResponseWriter, r * http.Request) {
 	}
 
 
-
-
-	//w.Write([]byte(result))
 }
 
 func determineListenAddress() (string,error) {
