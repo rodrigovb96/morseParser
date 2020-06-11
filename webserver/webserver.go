@@ -94,6 +94,7 @@ func determineListenAddress() (string,error) {
 func InitServer() {
 	http.HandleFunc("/",indexPage)
 	http.HandleFunc("/parse/",parsePage)
+	http.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir("files"))))
 
 	port, err := determineListenAddress()
 

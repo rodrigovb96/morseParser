@@ -1,12 +1,28 @@
+<!DOCTYPE html>
 <html>
 
+<head>
+	<title>Morse GO!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/files/templates/css/index.css">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
 
-	<body>
-		<h1> Result:<h1>
-				<p id="result">{{ .ParsedText }}</p>
-				{{ if .Command }} 
-				<input type="button" value="Play MorseCode" onclick="playMorse(0);"/>
-				<audio style="display:none;" controls id="dashAudio" src="data:audio/wav;base64,UklGRiQZAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAZAAAbBBwl+ESWVlpZ1EpV
+
+<body>
+	<div class="wrap-page">
+
+		<!-- <h1> Result:<h1> -->
+		<p class="morse-result" id="result" onclick="copyTextToClipboard(this)">{{ .ParsedText }}</p>
+		{{ if .Command }}
+
+		<div class="morsa">
+			<input class="play-button" type="button" value="Play MorseCode" onclick="playMorse(0);" />
+			<img src="/files/templates/assets/morsa-body.png" alt="">
+			<img src="/files/templates/assets/morsa-mouth.png" alt="">
+		</div>
+		<audio style="display:none;" controls id="dashAudio" src="data:audio/wav;base64,UklGRiQZAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAZAAAbBBwl+ESWVlpZ1EpV
 							    L28KReSbwsOst6W0rwrIBeuJERk1r07/WaFU1D84H+346dP9toKnPqgnuQTXevyCIklCzVWiWexM
 							    JzIaDoTnYsURrsGlD65jxYLnHg4iMvFMnVnTVUJCiSJ1/AnXIrlCqH6n/7bn0+z4Ox/QP6lU9lm7
 							    Tgo1mxHv6iPIma/VpaGsv8Ie5JsKJi8HSyBZ2VaeRMglAAA52mG7J6ngpvi02tBk9eMbQD1fUypa
@@ -119,8 +135,8 @@
 							    mwomLwhLIFnZVp5EyCUAADnaYbsnqd+m+LTa0GX14htBPV5TK1poUN43EBVl7vXKRbELplirMMDF
 							    4BQHGCwASYJYvlfeRvcojAN33b29LapkphCz3s3j8X4YnDrxUT9a8FGdOnsY5vHZzRSzX6Y0qre9
 							    fd2FA/0o2kbCV35YAkkWLBMHyOAswF+rAaZSsebKd+77FPY3S1BKWjxTZj27G5D1q9AstaamaakI
-							    u+Ha"/>
-					<audio style="display:none;" controls id="dotAudio" src="data:audio/wav;base64,UklGRqQMAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YYAMAAAbBB0l+ESVVllZ1EpV
+							    u+Ha" />
+		<audio style="display:none;" controls id="dotAudio" src="data:audio/wav;base64,UklGRqQMAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YYAMAAAbBB0l+ESVVllZ1EpV
 								    L3AKReSawsSst6W0rwrIBeuIERo1r07/WaFU1D85H+346dP9toKnPagnuQPXe/yDIklCzVWiWexM
 								    JzIZDobnYsUPrsKlEK5kxYPnHQ4jMvFMnFnSVUNCiSJ0/AnXIrlDqH+nALfo0+z4Oh/PP6hU9Vm8
 								    Tgs1mhHv6iLIma/VpaGsv8Id5JwKJi8HSyBZ2VaeRMglAAA52mK7Jqngpvi02tBl9eIbQT1eUyta
@@ -175,9 +191,21 @@
 								    VURCiSJ1/AnXI7lCqICnALfp0+v4Ox/PP6hU9lm7Tgo1mhHv6iPImq/VpaGsv8Id5JsKJy8HSyFZ
 								    2VaeRMclAAA52mK7J6ngpvi02tBl9eMbQT1eUytaZ1DeNxEVZu71ykSxC6ZYqzHAxuATBxgsAEmC
 								    WL5X3kb3KIsDd929vS2qZKYPs93N4/F9GJw68VE/WvBRnTp6GOfx2s0Vs16mM6q3vX7dhgP8KNlG
-								    wld+WANJFywUB8fgLMBfqwGmUbHmynju+xT1N0xQSlo9U2c9uhuQ9arQLLWmpmqpCLvh2g=="/>
-				{{end}}
-	</body>
+								    wld+WANJFywUB8fgLMBfqwGmUbHmynju+xT1N0xQSlo9U2c9uhuQ9arQLLWmpmqpCLvh2g==" />
+		{{end}}
+	</div>
+	<footer>
+		<h3>Made with &#10084; by <a href="https://github.com/rodrigovb96" target="_blank">Rodrigo</a> & <a
+				href="http://otuta.com.br/" target="_blank">TUTA.</a> </h3>
+	</footer>
+
+	<script src="/files/templates/js/index.js"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+
 </html>
 
 <script>
@@ -186,37 +214,32 @@
 
 	var command = {{ .Command }};
 
-	var morseCode =  document.getElementById("result").textContent;
+	var morseCode = document.getElementById("result").textContent;
 
 
 	var snd = null;
 
-function playMorse(pos)
-{
-	if( (pos+1) == morseCode.length )
-		return 
+	function playMorse(pos) {
+		if ((pos + 1) == morseCode.length)
+			return
 
-	let dotOrDash = morseCode.charAt(pos)
-	if( dotOrDash == "." )
-	{
-		snd = document.getElementById("dotAudio");
-	}
-	else if( dotOrDash == "-" )
-	{
-		snd = document.getElementById("dashAudio");
-	}
+		let dotOrDash = morseCode.charAt(pos)
+		if (dotOrDash == ".") {
+			snd = document.getElementById("dotAudio");
+		}
+		else if (dotOrDash == "-") {
+			snd = document.getElementById("dashAudio");
+		}
 
 
-	if( dotOrDash == " ")
-	{
-		playMorse(pos + 1);
-	}
-	else
-	{
-		snd.play();
-		snd.onended = function() { playMorse(pos + 1); };
-	}
+		if (dotOrDash == " ") {
+			playMorse(pos + 1);
+		}
+		else {
+			snd.play();
+			snd.onended = function () { playMorse(pos + 1); };
+		}
 
-}
+	}
 
 </script>

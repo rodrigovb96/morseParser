@@ -1,6 +1,117 @@
+/* IMPORT FONT */
+@font-face {
+    font-family: 'Fjalla';
+    src: url('/files/templates/fonts/FjallaOne-Regular.ttf');
+}
+
+body {
+    margin: 0;
+    font-family: 'Fjalla';
+}
+
 .wrap-page {
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(243, 119, 72);
+    background: linear-gradient(135deg, rgba(243, 119, 72, 1) 0%, rgba(103, 9, 121, 1) 100%, rgba(45, 40, 196, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.page-title h1 {
+    margin: 00;
+    font-size: 80px;
+    letter-spacing: 2px;
+}
+
+.page-title h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.input-string {
+    width: 350px;
+    height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+.input-string:focus,
+.btn-action input:focus {
+    outline: none;
+}
+
+.btn-action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn-action input {
+    width: 48%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: 'Fjalla';
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+    background-color: #2d2d2d;
+    cursor: pointer;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #2d2d2d;
     width: 100%;
-    background: rgb(243,119,72);
-    background: linear-gradient(135deg, rgba(243,119,72,1) 0%, rgba(103,9,121,1) 100%, rgba(45,40,196,1) 100%);
+    color: #fff;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+footer h3 a {
+    color: inherit ;
+}
+
+/* PARSED PAGE */
+.morsa {
+    position: relative;
+    width: 512px;
+    height: 512px;
+}
+
+.morsa img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.play-button {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.morse-result {
+    font-size: 35px;
+    color: #fff;
+    cursor: pointer;
 }
