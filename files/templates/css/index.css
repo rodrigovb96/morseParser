@@ -1,0 +1,6 @@
+.wrap-page {
+    height: 100%;
+    width: 100%;
+    background: rgb(243,119,72);
+    background: linear-gradient(135deg, rgba(243,119,72,1) 0%, rgba(103,9,121,1) 100%, rgba(45,40,196,1) 100%);
+}

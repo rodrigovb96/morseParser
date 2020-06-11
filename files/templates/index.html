@@ -1,7 +1,32 @@
+<!DOCTYPE html>
 <html>
-	<body>
-		<h1> Morse Code Parser<h1>
-		<h2> Parse To|From Morse </h2>
+
+<head>
+	<title>Morse GO!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/index.css">
+
+	<style>
+		body {
+			margin: 0;
+		}
+		.wrap-page {
+			height: 100vh;
+			width: 100vw;
+			background: rgb(243, 119, 72);
+			background: linear-gradient(135deg, rgba(243, 119, 72, 1) 0%, rgba(103, 9, 121, 1) 100%, rgba(45, 40, 196, 1) 100%);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap-page">
+		<div class="page-title">
+			<h1> Morse Code Parser<h1>
+					<h2> Parse To|From Morse </h2>
+		</div>
+
 
 		<label>Input String:</label>
 		<form method="get">
@@ -9,5 +34,9 @@
 			<input type="submit" value="To" formaction="/parse/t">
 			<input type="submit" value="from" formaction="/parse/f">
 		</form>
-	</body>
+	</div>
+
+
+</body>
+
 </html>
