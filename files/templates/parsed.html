@@ -12,16 +12,21 @@
 
 <body>
 	<div class="wrap-page">
-
-		<!-- <h1> Result:<h1> -->
-		<p class="morse-result" id="result" onclick="copyTextToClipboard(this)">{{ .ParsedText }}</p>
+		<p class="morse-result" id="result" onclick="copyTextToClipboard(this)" data-aos="fade-up"
+			data-aos-duration="1000">{{ .ParsedText }}</p>
 		{{ if .Command }}
 
-		<div class="morsa">
+		<div class="morsa" data-aos="fade-up" data-aos-duration="2000">
 			<input class="play-button" type="button" value="Play MorseCode" onclick="playMorse(0);" />
 			<img src="/files/templates/assets/morsa-body.png" alt="">
-			<img src="/files/templates/assets/morsa-mouth.png" alt="">
+			<img id="morsa-mouth" src="/files/templates/assets/morsa-mouth.png" alt="">
 		</div>
+		<p class="call-to-click" data-aos="fade-up" data-aos-duration="2000">Click me !!</p>
+
+		<!-- /CREDITOS A MORSA -->
+		<span class="icon-credits"><a href="https://iconscout.com/icons/walrus" target="_blank">Walrus Icon</a> by <a
+				href="https://iconscout.com/contributors/kerismaker">Kerismaker</a> on <a
+				href="https://iconscout.com">Iconscout</a></span>
 
 		<div class="toast-copied" id="toast"> Code copied! </div>
 
@@ -239,10 +244,20 @@
 			playMorse(pos + 1);
 		}
 		else {
+			mouthMove(dotOrDash == '.' ? 100 : 50);
 			snd.play();
 			snd.onended = function () { playMorse(pos + 1); };
 		}
 
+	}
+
+	function mouthMove(time) {
+		var a = document.getElementById('morsa-mouth');
+		a.style.top = "-20px";
+
+		setTimeout(function () {
+			a.style.top = "0px";
+		}, time);
 	}
 
 </script>

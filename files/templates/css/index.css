@@ -4,6 +4,11 @@
     src: url('/files/templates/fonts/FjallaOne-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Nanum';
+    src: url('/files/templates/fonts/NanumPenScript-Regular.ttf');
+}
+
 body {
     margin: 0;
     font-family: 'Fjalla';
@@ -131,4 +136,23 @@ footer h3 a {
 .toast-copied.show {
     right: 30px;
     transition: .3s all ease-in;
+}
+
+.icon-credits {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.icon-credits a  {
+    color: #fff;
+}
+
+.call-to-click {
+    font-family: 'Nanum';
+    font-size: 40px;
+    margin: 0;
+    color: #fff;
 }
