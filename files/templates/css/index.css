@@ -18,6 +18,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .page-title {
@@ -114,4 +116,19 @@ footer h3 a {
     font-size: 35px;
     color: #fff;
     cursor: pointer;
+}
+
+.toast-copied {
+    position: absolute;
+    right: -150px;
+    top: 25px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    transition: .3s all ease-out;
+}
+
+.toast-copied.show {
+    right: 30px;
+    transition: .3s all ease-in;
 }
