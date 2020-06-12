@@ -9,14 +9,24 @@ Features:
 - A file can be passed with the --fileName flag
 
 
+## Install & Build:
+
+Install: 
+
+```bash
+	go install
+```
+
 Build: 
 
 ```bash
-	go build main.go	
+	go build
 ```
+
+## Run:
 
 To see the usage:
 
 ```bash
-	./main -h
+	./morseParser -h
 ```
