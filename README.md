@@ -1,5 +1,4 @@
 # MorseGo
----
 
 A simple morse code parser made in Go.
 
