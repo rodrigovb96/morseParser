@@ -29,4 +29,4 @@ Then visit:
 
 
 Live Example:
-	[Heroku Hosted](still-river-16502.herokuapp.com)
+	[Heroku Hosted](https://still-river-16502.herokuapp.com)
