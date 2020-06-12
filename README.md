@@ -3,21 +3,30 @@
 
 A simple morse code parser made in Go.
 
-Features:
-- Parse from morse code to ascii or from ascii to morse code;
-- It can play the morse code as audio.
+this branch is dedicated to development of the Web version. For CLI go to the master branch.
 
-TODO:
-- Implement a server for using the parser in the web.
-
-Build: 
+Install: 
 
 ```bash
-	go build main.go	
+	go install	
 ```
 
-To see the usage:
+Set the PORT:
 
 ```bash
-	./main -h
+	set PORT=8080 # for example	
 ```
+
+Start the server:
+
+```bash
+	./morseParser
+```
+
+
+Then visit:
+	localhost:8080
+
+
+Live Example:
+	[Heroku Hosted](still-river-16502.herokuapp.com)
