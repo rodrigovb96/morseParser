@@ -42,10 +42,10 @@ func processInput(command string, message string) response{
 		result = parser.MorseCode.FromASCII(message)
 	// From morse to ASCII
 	} else if command == "f" {
-		if strings.ContainsRune(message,' ') {
-			result = parser.MorseCode.ToASCII(message)
-		}else {
+		if len(message) > 6 && !strings.ContainsRune(message,' ') {
 			result = "Invalid Input!"
+		}else if len(message) <= 6 || strings.ContainsRune(message,' ') {
+			result = parser.MorseCode.ToASCII(message)
 		}
 
 		command = ""
